@@ -1,0 +1,7 @@
+architecture
+component
+course
+glossary
+process
+server
+software
