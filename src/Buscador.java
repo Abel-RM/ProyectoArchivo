@@ -21,14 +21,15 @@ public class Buscador implements Observer {
         String temp = "";
 
         for (int i = 0; i < pdf.size(); i++){
-            //pdf.get(i).toLowerCase().contains(palabraClave)
-            //"\n\ndafcourse dsgds\n\r".matches(".*[^\\r\\n]+"+palabraClave+"\\s"+"[^\\r\\n]+.*"
-            // palabra  {4,2,3,45,}
-            if (pdf.get(i).toLowerCase().contains(palabraClave)){
+            //"\n\ndafcourse dsgds\n\r".matches(".*[^\\r\\n]+"+palabraClave+"\\s"+"[^\\r\\n]+.*")
+            String g = " "+pdf.get(i).toLowerCase().replaceAll("\r","").replaceAll("\n","");
+
+            if (g.matches(".* "+palabraClave+" .*")){
                 temp += (i+1)+",";
             }
         }
-        temp = temp.substring(0,temp.length()-1);
+        if (temp.length()>0)
+            temp = temp.substring(0,temp.length()-1);
         numeroPaginas.insert(palabraClave+"\t\t"+"{"+temp+"}");
 
     }

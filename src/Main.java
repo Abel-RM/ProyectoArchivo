@@ -10,16 +10,14 @@ public class Main {
 
             if (rutaTxt != null){
                 Line palabrasClave = new Line();
-                Line palabrasPdf = new Line();
                 Line numeroPaginas = new Line();
-
-                ArrayList<String> pdf = palabrasPdf.getAll();
+                ArrayList<String> pdf = new ArrayList<>();
 
                 Buscador buscador = new Buscador(pdf, numeroPaginas);
                 palabrasClave.addObserver(buscador);
 
 
-                LeerPdf.leer(rutaPdf, palabrasPdf);
+                LeerPdf.leer(rutaPdf, pdf);
                 Input.leer(rutaTxt, palabrasClave);
                 String rutaOut = escogerArchivo("Escoge la ruta del archivo de salida");
                 Output.escribir(rutaOut, numeroPaginas);

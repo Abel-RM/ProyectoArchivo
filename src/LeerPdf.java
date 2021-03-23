@@ -2,10 +2,11 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LeerPdf {
 
-    public static void leer(String ruta, Line lines) {
+    public static void leer(String ruta, ArrayList<String> palabrasPdf) {
         String parsedText = "";
         int lastPage = 0;
         try {
@@ -16,7 +17,7 @@ public class LeerPdf {
                 pdfStripper.setStartPage(i);
                 pdfStripper.setEndPage(i);
                 parsedText = pdfStripper.getText(pdDocument);
-                lines.insert(parsedText);
+                palabrasPdf.add(parsedText);
             }
 
         } catch (IOException e) {
